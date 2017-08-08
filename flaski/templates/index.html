@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Flaski</h1>
+<img src="{{ url_for('static', filename='snake.jpg') }}" alt="snake">
+<ul>
+{% for content in contents %}
+  <li>
+    <a href="{{ url_for('show_content', title=content.title) }}">{{ content.title }}</a>
+    <form action="/{{ content.title }}" method="post">
+      <input type="text" name="body">
+      <input type="submit">
+    </form>
+  </li>
+{% endfor %}
+</ul>
+{% endblock %}
